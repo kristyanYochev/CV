@@ -1,0 +1,30 @@
+/*
+The variable --fill-percentage is set inline due to every
+bar having a different fill percentage
+*/
+
+@keyframes load {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--fill-percentage);
+    }
+}
+
+.progress-bar {
+    background: gray;
+    height: 20px;
+    width: 60%;
+    padding: 3px;
+    border-radius: 13px;
+}
+
+.progress-bar > div {
+    background: blue;
+    height: 100%;
+    width: var(--fill-percentage);
+    border-radius: 9px;
+    animation: 2s ease-out 0s 1 load;
+}
