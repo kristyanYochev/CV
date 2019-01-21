@@ -13,3 +13,7 @@
 .section__title {
     border-bottom: 1px solid gray;
 }
+
+.section__text {
+    padding: 7px;
+}

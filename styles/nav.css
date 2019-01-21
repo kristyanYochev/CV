@@ -24,6 +24,8 @@
     line-height: 40px;
 
     transition: box-shadow 0.5s;
+
+    white-space: nowrap;
 }
 
 .navlink:hover {
