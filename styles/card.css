@@ -1,4 +1,15 @@
 .card {
     background-color: var(--card-bg-color);
     border-radius: 10px;
+    box-shadow: 10px 10px 35px -5px rgba(0,0,0,0.32);
+
+    padding: 20px;
+}
+
+.card__section {
+    margin-top: 10px;
+}
+
+.section__title {
+    border-bottom: 1px solid gray;
 }
