@@ -33,6 +33,10 @@ body {
         "footer footer footer";
 }
 
+ul {
+    margin-left: 1.5em;
+}
+
 .header {
     grid-area: header;
     text-align: center;
