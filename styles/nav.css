@@ -11,6 +11,7 @@
     background-color: var(--card-bg-color);
     width: 100vw;
     padding: 10px;
+    z-index: 100;
 }
 
 .navlink {
