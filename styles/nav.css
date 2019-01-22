@@ -33,6 +33,6 @@
     box-shadow: 3px 3px 35px -5px rgba(0,0,0,0.32);
 }
 
-.active {
+.navlink.active {
     background: rgba(32, 43, 59, 0.4);
 }
