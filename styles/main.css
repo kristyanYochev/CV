@@ -26,7 +26,7 @@ body {
     width: 100vw;
     display: grid;
     grid-template-columns: 10px 1fr 10px;
-    grid-template-rows: 50vh 1fr 10vh;
+    grid-template-rows: 55vh 1fr 10vh;
     grid-template-areas: 
         "header header header"
         "gutter1 content gutter"

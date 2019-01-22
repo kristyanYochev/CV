@@ -13,16 +13,25 @@
     <link rel="stylesheet" href="./styles/nav.css">
     <link rel="stylesheet" href="./styles/progress-bar.css">
     <link rel="stylesheet" href="./styles/carousel.css">
-
+    <link rel="stylesheet" href="./styles/animations.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
     <title>My CV</title>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <img class="image--round" src="./assets/me.jpg" width="150" alt="My photo">
+            <img class="image--round" src="./assets/me.jpg" width="150" alt="My photo" id="title-image">
             <h1 class="page-title">Кристиян Йочев</h1>
             <div class="contacts">
+                <h3 class="contacts__contact" id="phone-contact">
+                    Тел.:<span class="contact__text">+359 882 111 029</span>
+                </h3>
+
+                <h3 class="contacts__contact" id="phone-contact">
+                    Адрес:<span class="contact__text">гр. София, кв. Малинова долина, ул. 2-ра №10А</span>
+                </h3>
+                
                 <h3 class="contacts__contact" id="mail-contact">
                     <span class="contact__icon socicon-mail"></span> <span class="contact__text">kris.yochev@gmail.com</span>
                 </h3>
@@ -30,6 +39,12 @@
                 <a href="https://www.facebook.com/kris.yochev">
                     <h3 class="contacts__contact" id="facebook-contact">
                         <span class="contact__icon socicon-facebook"></span> <span class="contact__text">Kris Yochev</span>
+                    </h3>
+                </a>
+
+                <a href="https://join.skype.com/invite/p8DfjzNtz3Bf">
+                    <h3 class="contacts__contact" id="skype-contact">
+                        <span class="contact__icon socicon-skype"></span> <span class="contact__text">kristyanyochev</span>
                     </h3>
                 </a>
                 
@@ -49,11 +64,31 @@
         
         <div class="card" id="main-content">
             <nav class="nav-container">
-                <a href="#section-one" class="navlink active">Технически умения</a>
-                <a href="#section-two" class="navlink">Лични проекти</a>
-                <a href="#section-three" class="navlink">Участия в хакатони</a>
+                <a href="#personal-info" class="navlink active">Повече за мен</a>
+                <a href="#technical-skills" class="navlink">Технически умения</a>
+                <a href="#personal-projects" class="navlink">Лични проекти</a>
+                <a href="#hackathons" class="navlink">Участия в хакатони</a>
             </nav>
-            <section class="card__section" id="section-one">
+            <section class="card__section" id="personal-info">
+                <h2 class="section__title">
+                    Повече за мен
+                </h2>
+                <p class="section__text">
+                    Роден съм на 12 януари 2003 в гр. София, където съм живял целия си живот. Аз съм човек с много и различни интереси,
+                    но имам 3 основни - програмиране, авиация и музика. По програмиране се запалих в 6-ти клас, след като един съученик
+                    ми показа някаква програма, която беше написал. Тогава реших и аз да пробвам и ми хареса много. В 7-ми клас разбрах
+                    за едно училище, познато на всички като ТУЕС, където се учи програмиране и аз, естествено, реших, че ще кандидатствам там.
+                    Приеха ме, сега съм 10-ти клас там със специалност "Системно програмиране". <br>
+                    Но дотук споменах замо за едно хоби, а имам още 2. Когато бях на 12 години, дядо ми ме заведе при един негов приятел,
+                    който има летище, на което обучава пилоти. Той ме качи в самолета, застанахме на полосата, сложи си ръцете на таблото
+                    и каза "Хайде, какво чакаш, излитай!". Той ми обясни как става и момента, в който самолета се отдели от земята знаех, че
+                    трябва да се науча да летя. И fast-forward 4 години, карам курсове за PPL и имам 30 летателни часа. <br>
+                    И така стигаме до най-новото попълнение от неща, с които си запълвам времето - музика. Още не мога да си обясня как се
+                    почна цялото това, но важното е, че в момента свиря на китара и пиано, композирам музика (предимно метъл) и когато
+                    чуя някоя песен някъде, аз слушам за акорди и интервали. 
+                </p>
+            </section>
+            <section class="card__section" id="technical-skills">
                 <h2 class="section__title">
                     Технически умения
                 </h2>
@@ -84,7 +119,7 @@
                     </div>
                 </p>
             </section>
-            <section class="card__section" id="section-two">
+            <section class="card__section" id="personal-projects">
                 <h2 class="section__title">
                     Лични проекти
                 </h2>
@@ -116,7 +151,7 @@
                     </ul>
                 </p>
             </section>
-            <section class="card__section" id="section-three">
+            <section class="card__section" id="hackathons">
                 <h2 class="section__title">
                     Участия в хакатони
                 </h2>
