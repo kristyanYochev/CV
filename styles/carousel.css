@@ -1,0 +1,27 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel__slide {
+    width: 100%;
+    display: none;
+}
+
+.carousel__slide.active {
+    display: inline;
+    animation: 1s ease-in-out 0s 1 fadeIn;
+}
+
+.carousel__image {
+    width: 100%;
+}
