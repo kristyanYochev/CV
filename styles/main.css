@@ -67,8 +67,17 @@ ul {
     height: 100%;
 }
 
-#testcard {
+#main-content {
     grid-area: content;
+}
+
+footer {
+    grid-area: footer;
+    line-height: 10vh;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.25em;
 }
 
 
