@@ -8,6 +8,8 @@
 
 .card__section {
     margin-top: 10px;
+    padding: 30px;
+    box-sizing: content-box;
 }
 
 .section__title {
