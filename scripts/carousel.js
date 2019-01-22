@@ -53,8 +53,8 @@ class Carousel {
 
 (() => {
     var hackTues3Carousel = new Carousel(document.getElementById("hacktues3-carousel"))
-    hackTues3carousel.start(2000)
+    hackTues3Carousel.start(2000)
 
     var hack30xTuesCarousel = new Carousel(document.getElementById("hack30xtues-carousel"))
-    hack30xTuesCarousel.start(2000)
+    hack30xTuesCarousel.start(3000)
 })()
