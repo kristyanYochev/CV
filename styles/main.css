@@ -7,7 +7,7 @@
 }
 
 :root {
-    --bg-color: linear-gradient(to top, #3F5EFB, #FC466B); /* rgb(20, 53, 236) */
+    --bg-color: linear-gradient(to bottom, #FC466B, #3F5EFB); /* rgb(20, 53, 236), linear-gradient(to top, #3F5EFB, #FC466B) */
     --header-text-color: white;
     --card-bg-color: white;
     --card-text-color: black;
@@ -79,6 +79,21 @@ footer {
     color: white;
     font-weight: bold;
     font-size: 1.25em;
+}
+
+@keyframes pop-up {
+    0% {transform: scale(0); animation-timing-function: ease-in;}
+    33% {transform: scale(1); animation-timing-function: ease-out;}
+    50% {transform: scale(0.7); animation-timing-function: ease-in;}
+    66% {transform: scale(1); animation-timing-function: ease-out;}
+    82% {transform: scale(0.8); animation-timing-function: ease-in;}
+    92% {transform: scale(1); animation-timing-function: ease-out;}
+    97% {transform: scale(0.9); animation-timing-function: ease-in;}
+    100% {transform: scale(1); }
+}
+
+#title-image{
+    animation: pop-up 1s;
 }
 
 
