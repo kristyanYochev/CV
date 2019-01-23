@@ -52,6 +52,9 @@ class Carousel {
 }
 
 (() => {
+    var pplTestsCarousel = new Carousel(document.getElementById("ppl-tests"))
+    pplTestsCarousel.start(2500)
+
     var hackTues3Carousel = new Carousel(document.getElementById("hacktues3-carousel"))
     hackTues3Carousel.start(2000)
 
