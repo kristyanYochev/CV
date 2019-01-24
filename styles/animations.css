@@ -9,6 +9,6 @@
     100% {transform: scale(1); }
 }
 
-#title-image{
+#title-image {
     animation: pop-up 1s;
 }
