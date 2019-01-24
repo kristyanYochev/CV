@@ -12,14 +12,25 @@
         offset: 20
     })
 
-    var sections = document.querySelectorAll(".card__section")
-    sections.forEach(section => {
-        new Waypoint({
-            element: section,
-            handler: function() {
-                document.querySelectorAll(".nav-container a").forEach(link => link.classList.remove("active"))
-                document.querySelector(`.nav-container a[href="#${section.id}"]`).classList.add("active")
-            }
-        })
+    document.querySelectorAll(".navlink").forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault()
+            document.getElementById("main-content").animate([
+                {transform: "rotateY(360deg)"},
+                {transform: "rotateY(0deg)"}
+            ], 500)
+            
+            // Deactivate all links
+            document.querySelectorAll(".navlink").forEach(link => link.classList.remove("active"))
+            // Activate the clicked link
+            e.target.classList.add("active")
+            
+            let hash = new URL(e.target.href).hash
+
+            // Deactivate all sections
+            document.querySelectorAll(".card__section").forEach(section => section.classList.remove("active"))
+            // Activate the section
+            document.querySelector(hash).classList.add("active")
+        }, false)
     })
 })()

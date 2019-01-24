@@ -36,3 +36,7 @@
 .navlink.active {
     background: rgba(32, 43, 59, 0.4);
 }
+
+.card__section.active {
+    display: initial;
+}

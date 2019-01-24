@@ -81,22 +81,6 @@ footer {
     font-size: 1.25em;
 }
 
-@keyframes pop-up {
-    0% {transform: scale(0); animation-timing-function: ease-in;}
-    33% {transform: scale(1); animation-timing-function: ease-out;}
-    50% {transform: scale(0.7); animation-timing-function: ease-in;}
-    66% {transform: scale(1); animation-timing-function: ease-out;}
-    82% {transform: scale(0.8); animation-timing-function: ease-in;}
-    92% {transform: scale(1); animation-timing-function: ease-out;}
-    97% {transform: scale(0.9); animation-timing-function: ease-in;}
-    100% {transform: scale(1); }
-}
-
-#title-image{
-    animation: pop-up 1s;
-}
-
-
 @media screen and (min-width: 820px) {
     .container {
         grid-template-columns: 1fr 4fr 1fr;
