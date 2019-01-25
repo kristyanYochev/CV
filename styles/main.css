@@ -19,7 +19,9 @@ html {
 }
 
 body {
-    background: var(--bg-color);
+    background-image: var(--bg-color);
+    background-size: cover;
+    min-height: 100vh;
 }
 
 .container {
