@@ -158,6 +158,8 @@ if (!$_SESSION["logged_in"]) {
                                 }
                             break;
                         }
+
+                        echo "</p>";
                     }
                     ?>
                     </ul>
@@ -169,75 +171,30 @@ if (!$_SESSION["logged_in"]) {
                 </h2>
                 <p class="section__text">
                     <ul>
-                        <li>
-                            <h3>HackTUES3 - Трето място + специална награда от Dopamine</h3>
-                            <p>
-                                Наградата беше спечелена с уеб приложение за редактиране на изображения. Аз работех по сървърната част
-                                на проекта (Authentication, File Saving, DB Management, User Accounts) както и помагах с frontend частта.
-                                До финала бяха допуснати 6 отбора, от които 3 взеха награди (ние бяхме един от тези 3). Освен третото място,
-                                аз спечелих и специална награда от Dopamine - една от фирмите, които спонсорираха събитието.
-                            </p>
-                            <div class="carousel" id="hacktues3-carousel">
-                                <div class="carousel__slide">
-                                    <img src="./assets/hacktues3/award.jpg" alt="Award" class="carousel__image">
-                                </div>
-                                <div class="carousel__slide">
-                                    <img src="./assets/hacktues3/code.jpg" alt="Code" class="carousel__image">
-                                </div>
-                                <div class="carousel__slide">
-                                    <img src="./assets/hacktues3/judges.jpg" alt="Judges" class="carousel__image">
-                                </div>
-                                <div class="carousel__slide">
-                                    <img src="./assets/hacktues3/presenting.jpg" alt="Presenting" class="carousel__image">
-                                </div>
-                                <div class="carousel__slide">
-                                    <img src="./assets/hacktues3/spec_award.jpg" alt="Special award" class="carousel__image">
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <h3>Hack30xTUES - Специална награда от Cloud Balkan</h3>
-                            <p>
-                                Наградата беше сепечелена с проекта CodeHub, който може да се види по-горе.
-                            </p>
-                            <div class="carousel" id="hack30xtues-carousel">
-                                <div class="carousel__slide active"><img src="./assets/hack30xtues/award.png" alt="Award" class="carousel__image"></div>
-                                <div class="carousel__slide"><img src="./assets/hack30xtues/team.jpg" alt="Team" class="carousel__image"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <h3>
-                                Smart School 4 Smart School Children - Първо място в категориите "Игри и забавно дигитално учене"
-                                и "Приятел иноватор в училище"
-                            </h3>
-                            <p>
-                                За този хакатон аз и моят съотборник създадохме SConnect, което представлява социална мрежа, която
-                                позволява да си намираш нови приятели на база интереси.<br>
-                                Github: <a href="https://github.com/kristyanYochev/SConnect">Тук</a>
-                            </p>
-                        </li>
-                        <li>
-                            <h3>
-                                Balkan Hackathon - Финалист
-                            </h3>
-                            <p>
-                                На това събитие трябваше да направим нещо за дигиталното бъдеще в рамките на 24 часа. И нашето решение беше
-                                да автоматизираме организацията на файлове, като направим Cloud Storage платформа, която автоматично категоризира
-                                файлове спрямо тяхното съдържание. Като дойде време за представянето тя можеше да слага категории на изображения
-                                и PDF файлове. Освен това правеше обобщение на текста в PDF файлове, така че да може човек бързо да разбере
-                                какво пише в даден документ без да се налага да го отваря и чете целия.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>
-                                Sports Hackathons - Първо място
-                            </h3>
-                            <p>
-                                Това състезание ни вдъхнови да създадем в рамките на 2 дни платформа за онлайн тренировки. Целта беше да
-                                може да си намериш треньор онлайн и той, използвайки нашата платформа, да ти казва какви упражнения по колко
-                                пъти и колко серии трябва да правиш, с какво утежнение да го правиш и какво и по колко да ядеш.
-                            </p>
-                        </li>
+                        <?php
+                        $stmt = $db->query("SELECT * FROM hackathons");
+                        while ($hackathon = $stmt->fetch()) {
+                            echo "<h3>" . $hackathon['name'] . "</h3>";
+                            echo "<p>" . $hackathon['description'] . "</p>";
+                            
+                            switch($hackathon['media_type']) {
+                                case "video":
+                                    echo "<div class=\"video-container\">";
+                                    echo "<iframe width=\"560\" height=\"315\" src=\"" . $hackathon['media_url'] . "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+                                    echo "</div>";
+                                break;
+                                case "carousel":
+                                    echo "<div class=\"carousel\">";
+                                    $urls = explode(";", $hackathon['media_url']);
+                                    foreach ($urls as $url) {
+                                        echo "<div class=\"carousel__slide\">";
+                                        echo "<img src=\"$url\" class=\"carousel__image\">";
+                                        echo "</div>";
+                                    }
+                                break;
+                            }
+                        }
+                        ?>
                     </ul>
                 </p>
             </section>
