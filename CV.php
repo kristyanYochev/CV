@@ -1,4 +1,6 @@
 <?php
+require_once "config.php";
+
 session_start();
 
 if (!$_SESSION["logged_in"]) {
@@ -108,34 +110,16 @@ if (!$_SESSION["logged_in"]) {
                     Технически умения
                 </h2>
                 <p class="section__text">
-                    <h3>Python</h3>
-                    <div class="progress-bar">
-                        <div style="--fill-percentage: 95%;"></div>
-                    </div>
-                    Работил съм предимно с Flask microframework за разработка на Web приложения.
-                    Освен него имам опит и с PyQt5.
-                    
-                    <h3>JavaScript</h3>
-                    <div class="progress-bar">
-                        <div style="--fill-percentage: 85%;"></div>
-                    </div>
-                    Използвам го с ReactJS framework за frontend на Web приложения.
-
-                    <h3>HTML5 & CSS3</h3>
-                    <div class="progress-bar">
-                        <div style="--fill-percentage: 95%;"></div>
-                    </div>
-
-                    <h3>C/C++</h3>
-                    <div class="progress-bar">
-                        <div style="--fill-percentage: 75%;"></div>
-                    </div>
-                    Използвам ги предимно в Embedded програмиране с Arduino.
-
-                    <h3>SQL</h3>
-                    <div class="progress-bar">
-                        <div style="--fill-percentage: 80%;"></div>
-                    </div>
+                    <?php
+                    $stmt = $db->query("SELECT * FROM tech_skills");
+                    while ($skill = $stmt->fetch()) {
+                        echo "<h3>" . $skill["name"] . "</h3>";
+                        echo "<div class=\"progress-bar\">";
+                        echo    "<div style=\"--fill-percentage: " . $skill['percentage'] . "%;\"></div>";
+                        echo "</div>";
+                        echo $skill["description"];
+                    }
+                    ?>
                 </p>
             </section>
             <section class="card__section" id="personal-projects">
@@ -267,8 +251,8 @@ if (!$_SESSION["logged_in"]) {
             Designed by Kristyan Yochev 2019
         </footer>
     </div>
-    <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/carousel.js"></script>
-    <script src="./scripts/easter_egg.js"></script>
+    <script src="/scripts/navigation.js"></script>
+    <script src="/scripts/carousel.js"></script>
+    <script src="/scripts/easter_egg.js"></script>
 </body>
 </html>

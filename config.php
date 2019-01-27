@@ -6,7 +6,7 @@ $db_pass = "admin";
 
 $secret_key = "sfdghjkladfasdfhkdvhfh";
 
-$dsn = "mysql:host=$db_host;dbname=$db_name";
+$dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8";
 
 $opt = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
