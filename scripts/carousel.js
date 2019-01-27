@@ -52,12 +52,7 @@ class Carousel {
 }
 
 (() => {
-    var pplTestsCarousel = new Carousel(document.getElementById("ppl-tests"))
-    pplTestsCarousel.start(2500)
-
-    var hackTues3Carousel = new Carousel(document.getElementById("hacktues3-carousel"))
-    hackTues3Carousel.start(2000)
-
-    var hack30xTuesCarousel = new Carousel(document.getElementById("hack30xtues-carousel"))
-    hack30xTuesCarousel.start(3000)
+    document.querySelectorAll(".carousel").forEach(c => {
+        let carousel = new Carousel(c).start(2500)
+    })
 })()

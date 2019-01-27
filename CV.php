@@ -128,43 +128,38 @@ if (!$_SESSION["logged_in"]) {
                 </h2>
                 <p class="section__text">
                     <ul>
-                        <li>
-                            <h3>Code Hub</h3>
-                            <p>
-                                Code Hub е колаборативен редактор на код, създаден с цел да улесни обучението по програмиране.
-                                Проекта беше създаден по време на и за участие в хакатона Hack30xTUES.
-                                Той позволява на учениците в реално време да виждат какво прави техният учител, както и обратното.
-                                Така те могат да учат без да се налага да си извиват вратовете по всевъзможни начини само за да видят
-                                дъската, а после като дойде време за упражненията, учителят може да наблюдава кой пише, кой не, кой има
-                                затруднения със някоя задача и може да му/ѝ помогне без да става от компютъра. <br>
-                                Github: <a href="https://github.com/SashoStoichkov/Project-Hogwarts">Тук</a> <br>
-                                Live Demo: <a href="http://85.196.173.73:5000">Тук</a>
-                            </p>
-                            <!-- <video width="100%" src="./assets/codehub-demo.mp4" type="video/mp4" controls autoplay></video> -->
-                            <div class="video-container">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/zULzGhnWYX0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </li>
-                        <li>
-                            <h3>World Cup Prediction</h3>
-                            <p>
-                                Сайт, който предсказва резулататите от световното първенство по футбол с 55% успеваемост. <br>
-                                Github: <a href="https://github.com/VIVelev/WorldCup-Prediction">Тук</a>
-                            </p>
-                        </li>
-                        <li>
-                            <h3>PPL(A) примерни тестове</h3>
-                            <p>
-                                Сайт с примерни теоретични тестове за любител пилот на български. Линк: <a href="http://85.196.173.73/">Тук</a>.
-                                <div class="carousel" id="ppl-tests">
-                                    <div class="carousel__slide active"><img src="./assets/PPLTests/home.png" alt="Home page for PPL tests" class="carousel__image"></div>
-                                    <div class="carousel__slide"><img src="./assets/PPLTests/testStart.png" alt="Beginning of test" class="carousel__image"></div>
-                                    <div class="carousel__slide"><img src="./assets/PPLTests/testMiddle.png" alt="Middle of a test" class="carousel__image"></div>
-                                    <div class="carousel__slide"><img src="./assets/PPLTests/unsolvedQuestions.png" alt="Unsolved Questions" class="carousel__image"></div>
-                                    <div class="carousel__slide"><img src="./assets/PPLTests/solvedQuestions.png" alt="Solved Questions" class="carousel__image"></div>
-                                </div>
-                            </p>
-                        </li>
+                    <?php
+                    $stmt = $db->query("SELECT * FROM project");
+                    while ($project = $stmt->fetch()) {
+                        echo "<li>";
+                        echo "<h3>" . $project["name"] . "</h3>";
+                        echo "<p>" . $project["description"] . "<br>";
+                        if ($project['github']) {
+                            echo "Github: <a href=\"" . $project['github'] . "\">Тук</a> <br>";
+                        }
+
+                        if ($project['live_demo']) {
+                            echo "Live Demo: <a href=\"" . $project['live_demo'] . "\">Тук</a> <br>";
+                        }
+
+                        switch($project['media_type']) {
+                            case "video":
+                                echo "<div class=\"video-container\">";
+                                echo "<iframe width=\"560\" height=\"315\" src=\"" . $project['media_url'] . "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+                                echo "</div>";
+                            break;
+                            case "carousel":
+                                echo "<div class=\"carousel\">";
+                                $urls = explode(";", $project['media_url']);
+                                foreach ($urls as $url) {
+                                    echo "<div class=\"carousel__slide\">";
+                                    echo "<img src=\"$url\" class=\"carousel__image\">";
+                                    echo "</div>";
+                                }
+                            break;
+                        }
+                    }
+                    ?>
                     </ul>
                 </p>
             </section>
@@ -182,8 +177,8 @@ if (!$_SESSION["logged_in"]) {
                                 До финала бяха допуснати 6 отбора, от които 3 взеха награди (ние бяхме един от тези 3). Освен третото място,
                                 аз спечелих и специална награда от Dopamine - една от фирмите, които спонсорираха събитието.
                             </p>
-                            <div class="courousel" id="hacktues3-carousel">
-                                <div class="carousel__slide active">
+                            <div class="carousel" id="hacktues3-carousel">
+                                <div class="carousel__slide">
                                     <img src="./assets/hacktues3/award.jpg" alt="Award" class="carousel__image">
                                 </div>
                                 <div class="carousel__slide">
