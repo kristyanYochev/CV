@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: linear-gradient(to bottom, #FC466B, #3F5EFB); /* rgb(20, 53, 236), linear-gradient(to top, #3F5EFB, #FC466B) */
+    --header-text-color: white;
+    --card-bg-color: white;
+    --card-text-color: black;
+}
+
+html {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: var(--bg-color);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "empty empty empty"
+        "empty1 card empty2"
+        "empty3 empty3 empty3";
+}
+
+#main-content {
+    grid-area: card;
+}

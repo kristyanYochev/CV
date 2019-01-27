@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pass_hash = hash_hmac("sha256", $_POST["password"], $secret_key);
         
         if ($pass_hash === $real_pass_hash) {
-            header("Location: /home.php");
+            header("Location: /CV.php");
         } else {
             $err = "Invalid password!";
         }
@@ -38,16 +38,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta property="og:locale" content="bg_BG">
     <meta property="fb:app_id" content="234666257473081">
 
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/input.css">
+
     <title>Login</title>
 </head>
 <body>
-    <form action="/" method="post">
-        <input type="text" name="email">
-        <input type="password" name="password">
-        <input type="submit" value="Submit">
-    </form>
-<?php
-echo $err;
-?>
+    <div class="container">
+        <div class="card" id="main-content">
+            <h2 class="section__title">Login</h2>
+            <form action="/" method="post">
+                <input class="textfield" type="text" name="email" placeholder="E-mail">
+                <input class="textfield" type="password" name="password" placeholder="Password">
+                
+                <span class="error">
+                    <?php
+                    echo $err;
+                    ?>
+                </span><br>
+                <input class="button" type="submit" value="Submit">
+                <a class="link" href="/register.php">Don't have an account? Sign up!</a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
