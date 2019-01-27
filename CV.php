@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if (!$_SESSION["logged_in"]) {
+    header("Location: /");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head preifx="og: http://ogp.me/ns/website#">
@@ -41,6 +48,8 @@
                 <a href="#technical-skills" class="navlink">Технически умения</a>
                 <a href="#personal-projects" class="navlink">Лични проекти</a>
                 <a href="#hackathons" class="navlink">Участия в хакатони</a>
+
+                <a href="/logout.php" class="navlink--ext">Излез</a>
             </nav>
             <section class="card__section active" id="personal-info">
                 <h2 class="section__title">Контакти</h2>

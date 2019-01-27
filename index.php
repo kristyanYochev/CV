@@ -1,6 +1,12 @@
 <?php
 require_once "config.php";
 
+session_start();
+
+if ($_SESSION["logged_in"]) {
+    header("Location: /CV.php");
+}
+
 $err = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -14,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pass_hash = hash_hmac("sha256", $_POST["password"], $secret_key);
         
         if ($pass_hash === $real_pass_hash) {
+            $_SESSION["logged_in"] = true;
             header("Location: /CV.php");
         } else {
             $err = "Invalid password!";
