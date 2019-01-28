@@ -14,9 +14,12 @@ $opt = array(
     PDO::ATTR_PERSISTENT => true
 );
 
-try {
+try 
+{
     $db = new PDO($dsn, $db_username, $db_pass, $opt);
-} catch(PDOException $e) {
+} 
+catch(PDOException $e) 
+{
     echo "Connection error :" . $e->getMessage();
 }
 ?>

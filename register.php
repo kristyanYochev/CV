@@ -5,7 +5,8 @@ $err = "";
 
 $email = $password = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") 
+{
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -13,22 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindParam("email", $email);
     $stmt->execute();
 
-    if ($stmt->fetch()) {  // Already exists
+    if ($stmt->fetch()) 
+    {  // Already exists
         $err = "Email already taken!";
-    } else {
-        if ($password === $_POST["confirm-password"]) {
+    } 
+    else 
+    {
+        if ($password === $_POST["confirm-password"]) 
+        {
             $password_hash = hash_hmac("sha256", $password, $secret_key);
     
             $stmt = $db->prepare("INSERT INTO user (email, password) VALUES (:email, :password)");
             $stmt->bindParam("email", $email);
             $stmt->bindParam("password", $password_hash);
             
-            if ($stmt->execute()) {
+            if ($stmt->execute()) 
+            {
                 header("Location: /");
-            } else {
+            } 
+            else 
+            {
                 $err = "Something went wrong";
             }
-        } else {
+        } 
+        else 
+        {
             $err = "Passwords do not match";
         }
     }

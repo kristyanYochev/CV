@@ -3,26 +3,40 @@ require_once "config.php";
 
 session_start();
 
-if ($_SESSION["logged_in"]) {
+if ($_SESSION["logged_in"]) 
+{
     header("Location: /CV.php");
 }
 
 $err = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $stmt = $db->prepare("SELECT password FROM user where email = :email");
+if ($_SERVER["REQUEST_METHOD"] === "POST") 
+{
+    $stmt = $db->prepare("SELECT * FROM user where email = :email");
     $stmt->bindValue("email", $_POST["email"]);
     $stmt->execute();
 
-    if (!$real_pass_hash = $stmt->fetchColumn()) {  // User doesn't exist
+    $user_data = $stmt->fetch();
+
+    var_dump($user_data);
+    $real_pass_hash = $user_data["password"];
+
+    var_dump($real_pass_hash);
+    if (!$user_data) 
+    {  // User doesn't exist
         $err = "No such email!";
-    } else {
+    } 
+    else 
+    {
         $pass_hash = hash_hmac("sha256", $_POST["password"], $secret_key);
         
-        if ($pass_hash === $real_pass_hash) {
+        if ($pass_hash === $real_pass_hash) 
+        {
             $_SESSION["logged_in"] = true;
-            header("Location: /CV.php");
-        } else {
+            // header("Location: /CV.php");
+        } 
+        else 
+        {
             $err = "Invalid password!";
         }
     }

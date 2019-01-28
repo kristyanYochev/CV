@@ -2,10 +2,14 @@
     // This is the code for the nav-bar sticking to the top when scrolling through it
     var navWaypoint = new Waypoint({
         element: document.querySelector(".nav-container"),
-        handler: function(direction) {
-            if (direction === "down") {
+        handler: function(direction) 
+        {
+            if (direction === "down") 
+            {
                 this.element.classList.add("nav-container--fixed")
-            } else {
+            } 
+            else 
+            {
                 this.element.classList.remove("nav-container--fixed")
             }
         },

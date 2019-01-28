@@ -1,5 +1,7 @@
-class Carousel {
-    constructor(parentElement) {
+class Carousel 
+{
+    constructor(parentElement) 
+    {
         this.parentElement = parentElement
         this.slides = parentElement.querySelectorAll(".carousel__slide")
         this.activeSlide = 0
@@ -12,8 +14,10 @@ class Carousel {
         this.start = this.start.bind(this)
     }
 
-    setSlide(slideNumber) {
-        if (slideNumber >= this.slides.length || slideNumber < 0) {
+    setSlide(slideNumber) 
+    {
+        if (slideNumber >= this.slides.length || slideNumber < 0) 
+        {
             console.error(`Invalid slide number: ${slideNumber}`)
             return;
         }
@@ -29,15 +33,20 @@ class Carousel {
     }
 
     nextSlide() {
-        if (this.activeSlide + 1 >= this.slides.length) {
+        if (this.activeSlide + 1 >= this.slides.length) 
+        {
             this.setSlide(0)
-        } else {
+        } 
+        else 
+        {
             this.setSlide(this.activeSlide + 1)
         }
     }
 
-    start(delay) {
-        if (this.rotating) {
+    start(delay) 
+    {
+        if (this.rotating) 
+        {
             console.error("Unable to start carousel: already started!")
             return;
         }
@@ -45,7 +54,8 @@ class Carousel {
         this.interval = setInterval(this.nextSlide, delay)
     }
 
-    stop() {
+    stop() 
+    {
         this.rotating = false
         clearInterval(this.interval)
     }

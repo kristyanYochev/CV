@@ -3,7 +3,8 @@ require_once "config.php";
 
 session_start();
 
-if (!$_SESSION["logged_in"]) {
+if (!$_SESSION["logged_in"]) 
+{
     header("Location: /");
 }
 ?>
@@ -112,7 +113,8 @@ if (!$_SESSION["logged_in"]) {
                 <p class="section__text">
                     <?php
                     $stmt = $db->query("SELECT * FROM tech_skills");
-                    while ($skill = $stmt->fetch()) {
+                    while ($skill = $stmt->fetch()) 
+                    {
                         echo "<h3>" . $skill["name"] . "</h3>";
                         echo "<div class=\"progress-bar\">";
                         echo    "<div style=\"--fill-percentage: " . $skill['percentage'] . "%;\"></div>";
@@ -130,19 +132,23 @@ if (!$_SESSION["logged_in"]) {
                     <ul>
                     <?php
                     $stmt = $db->query("SELECT * FROM project");
-                    while ($project = $stmt->fetch()) {
+                    while ($project = $stmt->fetch())
+                    {
                         echo "<li>";
                         echo "<h3>" . $project["name"] . "</h3>";
                         echo "<p>" . $project["description"] . "<br>";
-                        if ($project['github']) {
+                        if ($project['github']) 
+                        {
                             echo "Github: <a href=\"" . $project['github'] . "\">Тук</a> <br>";
                         }
 
-                        if ($project['live_demo']) {
+                        if ($project['live_demo']) 
+                        {
                             echo "Live Demo: <a href=\"" . $project['live_demo'] . "\">Тук</a> <br>";
                         }
 
-                        switch($project['media_type']) {
+                        switch($project['media_type']) 
+                        {
                             case "video":
                                 echo "<div class=\"video-container\">";
                                 echo "<iframe width=\"560\" height=\"315\" src=\"" . $project['media_url'] . "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
@@ -151,7 +157,8 @@ if (!$_SESSION["logged_in"]) {
                             case "carousel":
                                 echo "<div class=\"carousel\">";
                                 $urls = explode(";", $project['media_url']);
-                                foreach ($urls as $url) {
+                                foreach ($urls as $url) 
+                                {
                                     echo "<div class=\"carousel__slide\">";
                                     echo "<img src=\"$url\" class=\"carousel__image\">";
                                     echo "</div>";
@@ -173,11 +180,13 @@ if (!$_SESSION["logged_in"]) {
                     <ul>
                         <?php
                         $stmt = $db->query("SELECT * FROM hackathons");
-                        while ($hackathon = $stmt->fetch()) {
+                        while ($hackathon = $stmt->fetch()) 
+                        {
                             echo "<h3>" . $hackathon['name'] . "</h3>";
                             echo "<p>" . $hackathon['description'] . "</p>";
                             
-                            switch($hackathon['media_type']) {
+                            switch($hackathon['media_type']) 
+                            {
                                 case "video":
                                     echo "<div class=\"video-container\">";
                                     echo "<iframe width=\"560\" height=\"315\" src=\"" . $hackathon['media_url'] . "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
@@ -186,7 +195,8 @@ if (!$_SESSION["logged_in"]) {
                                 case "carousel":
                                     echo "<div class=\"carousel\">";
                                     $urls = explode(";", $hackathon['media_url']);
-                                    foreach ($urls as $url) {
+                                    foreach ($urls as $url) 
+                                    {
                                         echo "<div class=\"carousel__slide\">";
                                         echo "<img src=\"$url\" class=\"carousel__image\">";
                                         echo "</div>";
