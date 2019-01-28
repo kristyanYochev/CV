@@ -2,7 +2,7 @@
 $db_host = "127.0.0.1";
 $db_name = "php_test";
 $db_username = "root";
-$db_pass = "admin";
+$db_pass = "";
 
 $secret_key = "sfdghjkladfasdfhkdvhfh";
 
